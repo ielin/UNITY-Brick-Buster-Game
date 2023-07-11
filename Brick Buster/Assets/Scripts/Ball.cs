@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float startSpeed;
+    public AudioSource hitSFX, brickBreak;
+    private ParticleSystem particle;
+    private SpriteRenderer blockSprite;
+    private BoxCollider2D blockCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +25,48 @@ public class Ball : MonoBehaviour
         MoveBall(new Vector2(0, -1));
     }
 
+    //Ball Movement
     void MoveBall(Vector2 direction)
     {
         direction = direction.normalized;
         rb.velocity = direction * startSpeed;
     }
 
+    //Detection of Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Paddle")
+        if(collision.gameObject.name == "Paddle")
         {
+            hitSFX.Play();
             Bounce(collision);
         }
+
+        if(collision.collider.CompareTag("Block"))
+        {
+            brickBreak.time = 0.4f;
+            brickBreak.Play();
+
+            StartCoroutine(Break(collision.collider));
+        }
+    }
+    
+    //Ball Break
+    private IEnumerator Break(Collider2D collision)
+    {
+        particle = collision.gameObject.GetComponent<ParticleSystem>();
+        particle.Play();
+        blockSprite = collision.gameObject.GetComponent<SpriteRenderer>();
+        blockSprite.enabled = false;
+
+        blockCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+        blockCollider.enabled = false;
+
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+
+        Destroy(collision.gameObject);
     }
 
+    //Ball Bounce 
     private void Bounce(Collision2D collision)
     {
         Vector2 ballPosition = transform.position;
