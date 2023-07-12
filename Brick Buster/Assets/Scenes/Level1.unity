@@ -1585,7 +1585,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064858636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 356064247}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1064858636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11842,7 +11854,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1349411998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 356064247}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1349411998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37314,7 +37338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1971516473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 356064247}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: LoadStartMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1971516473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37433,7 +37469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Any button to start
+  m_text: 'Click to start '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d434e54a91d83e4caa97d99cec7b8e2, type: 2}
   m_sharedMaterial: {fileID: -6327551864390669306, guid: 1d434e54a91d83e4caa97d99cec7b8e2, type: 2}
