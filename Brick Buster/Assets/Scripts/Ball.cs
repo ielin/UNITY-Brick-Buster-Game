@@ -12,7 +12,8 @@ public class Ball : MonoBehaviour
     private ParticleSystem particle;
     private SpriteRenderer blockSprite;
     private BoxCollider2D blockCollider;
-    private StartMenu startMenuScript;
+
+    public StartMenu startMenuScript;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,8 @@ public class Ball : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(5);
+        startMenuScript.startMenuActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        startMenuScript.uiGroup.alpha = 0f;
     }
     
     public IEnumerator Launch()
