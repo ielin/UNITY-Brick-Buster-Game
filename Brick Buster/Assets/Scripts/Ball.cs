@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float startSpeed;
-    public AudioSource hitSFX, brickBreak;
+    public AudioSource hitSFX, brickBreak, ballFall;
     private ParticleSystem particle;
     private SpriteRenderer blockSprite;
     private BoxCollider2D blockCollider;
+    private StartMenu startMenuScript;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,15 @@ public class Ball : MonoBehaviour
         StartCoroutine(Launch());
     }
 
+    //Restart a scene
+    public IEnumerator Restart()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        startMenuScript.uiGroup.alpha = 0f;
+    }
+    
     public IEnumerator Launch()
     {
         yield return new WaitForSeconds(2);
@@ -47,6 +58,12 @@ public class Ball : MonoBehaviour
             brickBreak.Play();
 
             StartCoroutine(Break(collision.collider));
+        }
+
+        if (collision.collider.CompareTag("BottomBorder"))
+        {
+            ballFall.Play();
+            StartCoroutine(Restart());
         }
     }
     

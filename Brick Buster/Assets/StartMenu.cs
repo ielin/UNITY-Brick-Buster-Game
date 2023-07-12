@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject startMenuAnimation;
+    [SerializeField] public CanvasGroup uiGroup;
     public GameObject startMenuUI;
-    public static bool startMenuActive = true;
+    public static bool startMenuActive = true, fadeOut = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +29,20 @@ public class StartMenu : MonoBehaviour
             }
             else
             {
-                startMenuAnimation.GetComponent<Animator>().enabled = true;
-                startMenuAnimation.GetComponent<Animator>().Play("StartMenuFade", 0, 0);
-                startMenuUI.SetActive(false);
+                if (fadeOut)
+                {
+                    uiGroup.alpha -= Time.deltaTime;
+                }
+
                 startMenuActive = false;
                 Time.timeScale = 1f;
             }
         }
+
+        if (fadeOut == true && startMenuActive == false)
+        {
+            uiGroup.alpha -= Time.deltaTime;
+        }
+
     }
 }
