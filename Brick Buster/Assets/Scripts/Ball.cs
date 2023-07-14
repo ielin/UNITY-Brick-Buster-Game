@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return new WaitForSeconds(5);
         startMenuScript.startMenuActive = true;
+        Score.currentScore = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
