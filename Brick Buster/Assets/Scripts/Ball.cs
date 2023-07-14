@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     private BoxCollider2D blockCollider;
 
     public StartMenu startMenuScript;
+    public Score scoreScript;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,9 @@ public class Ball : MonoBehaviour
             brickBreak.time = 0.4f;
             brickBreak.Play();
 
+            scoreScript.UpdateScore();
             StartCoroutine(Break(collision.collider));
+           
         }
 
         if (collision.collider.CompareTag("BottomBorder"))

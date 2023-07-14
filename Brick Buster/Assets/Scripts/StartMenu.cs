@@ -12,7 +12,7 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        startMenuActive = true;
     }
 
     // Update is called once per frame
