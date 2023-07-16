@@ -8,14 +8,14 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    public static int currentScore = 0;
+    public static int currentScore;
     public int goalScore;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        currentScore = 0;
     }
 
     // Update is called once per frame
