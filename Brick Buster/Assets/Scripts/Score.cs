@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     public static int currentScore = 0;
     public int goalScore;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,4 +34,5 @@ public class Score : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
+
 }
